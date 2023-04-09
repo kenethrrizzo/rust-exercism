@@ -3,16 +3,16 @@ use std::collections::HashSet;
 pub fn anagrams_for<'a>(word: &'a str, possible_anagrams: &[&'a str]) -> HashSet<&'a str> {
     let sorted_word = sort_and_up_word(word);
 
-    let mut set: HashSet<&'a str> = HashSet::new();
+    let mut result: HashSet<&'a str> = HashSet::new();
     for anagram in possible_anagrams.iter() {
         if eq_ignore_case(word, anagram) {
             continue;
         }
         if sorted_word == sort_and_up_word(anagram) {
-            set.insert(anagram);
+            result.insert(anagram);
         }
     }
-    set
+    result
 }
 
 fn sort_and_up_word(word: &str) -> String {
