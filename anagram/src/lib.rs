@@ -1,7 +1,7 @@
 use std::collections::HashSet;
 
 pub fn anagrams_for<'a>(word: &'a str, possible_anagrams: &[&'a str]) -> HashSet<&'a str> {
-    let sorted_word = sort_and_up_word(word);
+    let sorted_word: String = sort_and_up_word(word);
 
     let mut result: HashSet<&'a str> = HashSet::new();
     for anagram in possible_anagrams.iter() {
@@ -12,15 +12,15 @@ pub fn anagrams_for<'a>(word: &'a str, possible_anagrams: &[&'a str]) -> HashSet
             result.insert(anagram);
         }
     }
-    result
+    return result;
 }
 
 fn sort_and_up_word(word: &str) -> String {
     let mut chars: Vec<char> = word.to_uppercase().chars().collect();
     chars.sort_unstable();
-    chars.into_iter().collect()
+    return chars.into_iter().collect();
 }
 
 fn eq_ignore_case(first_string: &str, second_string: &str) -> bool {
-    first_string.to_lowercase() == second_string.to_lowercase()
+    return first_string.to_lowercase() == second_string.to_lowercase();
 }
