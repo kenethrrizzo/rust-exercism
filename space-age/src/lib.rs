@@ -31,6 +31,11 @@ pub trait Planet {
     fn years_during(d: &Duration) -> f64;
 }
 
+// Tipo de argumentos en macros
+// Identificadores (palabras clave, nombres de variables, etc.).
+// Literales (números, cadenas de texto, caracteres, etc.).
+// Patrones (para hacer coincidir y desestructurar tipos de datos complejos).
+// Bloques de código (que pueden contener cualquier cosa, incluyendo otras macros).
 macro_rules! impl_planet {
     ($name:ident, $orbital_period:expr) => {
         pub struct $name;
@@ -43,6 +48,7 @@ macro_rules! impl_planet {
     };
 }
 
+// Uso de las macros
 impl_planet!(Mercury, ORBITAL_PERIODS[0]);
 impl_planet!(Venus, ORBITAL_PERIODS[1]);
 impl_planet!(Earth, ORBITAL_PERIODS[2]);
