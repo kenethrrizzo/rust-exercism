@@ -39,6 +39,7 @@ fn check_mines(row: usize, column: usize, minefield: &[&str]) -> u8 {
                 if v.len() == end {
                     end = column;
                 }
+                // Se agrega uno para que tome el valor en el substring
                 end += 1;
 
                 let substring: &str = &v[start..end];
