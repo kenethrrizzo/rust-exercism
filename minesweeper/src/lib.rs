@@ -34,12 +34,14 @@ fn check_mines(row: usize, column: usize, minefield: &[&str]) -> u8 {
                 if column > 0 {
                     start = column - 1;
                 }
-                let mut end = column + 1;
 
+                let mut end = column + 1;
                 if v.len() == end {
                     end = column;
                 }
-                let substring: &str = &v[start..end + 1];
+                end += 1;
+
+                let substring: &str = &v[start..end];
                 num_mines = substring.matches("*").count() as u8;
             }
             None => (),
