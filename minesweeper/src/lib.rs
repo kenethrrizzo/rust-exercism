@@ -28,24 +28,21 @@ fn check_mines(row: usize, column: usize, minefield: &[&str]) -> u8 {
     fn count_mines_in_row(row: usize, column: usize, minefield: &[&str]) -> u8 {
         let mut num_mines: u8 = 0;
 
-        match minefield.get(row) {
-            Some(v) => {
-                let mut start = column;
-                if column > 0 {
-                    start = column - 1;
-                }
-
-                let mut end = column + 1;
-                if v.len() == end {
-                    end = column;
-                }
-                // Se agrega uno para que tome el valor en el substring
-                end += 1;
-
-                let substring: &str = &v[start..end];
-                num_mines = substring.matches("*").count() as u8;
+        if let Some(v) = minefield.get(row) {
+            let mut start = column;
+            if column > 0 {
+                start = column - 1;
             }
-            None => (),
+
+            let mut end = column + 1;
+            if v.len() == end {
+                end = column;
+            }
+            // Se agrega uno para que tome el valor en el substring
+            end += 1;
+
+            let substring: &str = &v[start..end];
+            num_mines = substring.matches("*").count() as u8;
         }
 
         num_mines
