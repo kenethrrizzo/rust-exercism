@@ -21,7 +21,7 @@ pub fn annotate(minefield: &[&str]) -> Vec<String> {
         board.push(column);
     }
 
-    board
+    return board;
 }
 
 fn check_mines(row: usize, column: usize, minefield: &[&str]) -> u8 {
@@ -29,12 +29,12 @@ fn check_mines(row: usize, column: usize, minefield: &[&str]) -> u8 {
         let mut num_mines: u8 = 0;
 
         if let Some(v) = minefield.get(row) {
-            let mut start = column;
+            let mut start: usize = column;
             if column > 0 {
                 start = column - 1;
             }
 
-            let mut end = column + 1;
+            let mut end: usize = column + 1;
             if v.len() == end {
                 end = column;
             }
@@ -45,7 +45,7 @@ fn check_mines(row: usize, column: usize, minefield: &[&str]) -> u8 {
             num_mines = substring.matches("*").count() as u8;
         }
 
-        num_mines
+        return num_mines;
     }
 
     let mut num_mines: u8 = 0;
@@ -55,5 +55,5 @@ fn check_mines(row: usize, column: usize, minefield: &[&str]) -> u8 {
     num_mines += count_mines_in_row(row, column, minefield);
     num_mines += count_mines_in_row(row + 1, column, minefield);
 
-    num_mines
+    return num_mines;
 }
